@@ -46,6 +46,8 @@ SW.views.card = Ember.View.extend
                 content = @content
                 @$().mouseenter ->
                         SW.magnifier.set('content', content)
+                @$().mouseleave ->
+                        SW.magnifier.clear()
         ).observes('src')
         didInsertElement: ->
                 @updatePosition()
@@ -56,13 +58,17 @@ SW.magnifier = SW.views.card.create
         updatePosition: ->
         updateSection: ->
         updateSide: ->
+        clear: ->
+                that = @$()
+                @timeout = window.setTimeout((-> that.fadeOut(500)), 2000)
         updateMagnified: (->
                 @exists? or @appendTo('#magnified')
+                @$().fadeIn(100)
+                window.clearTimeout(@timeout)
         ).observes('content')
         didInsertElement: ->
                 @_super()
                 @exists = true
-
 
 $ ->
         c = SW.card.create()
