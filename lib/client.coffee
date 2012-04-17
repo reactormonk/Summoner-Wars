@@ -89,7 +89,7 @@ resizeField = ->
                 field = $(dom)
                 posX = parseInt(field.attr('data-posx'), 10)
                 posY = parseInt(field.attr('data-posy'), 10)
-                width = $(window).width() / max
+                width = $('#field').width() / max
                 field.css('left', posX * width)
                 field.css('top', posY * (width / 1.5))
 $(window).resize(resizeField)
