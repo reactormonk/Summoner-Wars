@@ -15,9 +15,12 @@ SW.card = Ember.Object.extend
 SW.views.card = Ember.View.extend
         classNames: ['card']
         tagName: 'img'
-        attributeBindings: ['src']
+        attributeBindings: ['src', 'alt']
+        alt: (->
+                @getPath('content.name') + " of the " + @getPath('content.fraction')
+        ).property('content.fraction', 'content.name')
         src: (->
-                if @getPath('content.name')?
+                escape if @getPath('content.name')?
                         "./images/" + @getPath('content.fraction') + '-' + @getPath('content.name') + '.jpg'
                 else
                         "./images/Cardback-" + @getPath('content.fraction') + '.jpg'
