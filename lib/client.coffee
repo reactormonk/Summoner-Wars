@@ -38,7 +38,7 @@ SW.views.card = Ember.View.extend
                         name = 'update' + (attribute[0].toUpperCase() + attribute[1..])
                         obj = {}
                         obj[name] = (->
-                                SW.views.card.state[@getPath('content.section')][name]?.bind(this).call()
+                                SW.views.card.state[@getPath('content.section')][name]?.call(this)
                         ).observes('content.' + attribute)
                         SW.views.card.reopen(obj)
                 )()
