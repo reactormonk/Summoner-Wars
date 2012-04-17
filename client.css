@@ -2,18 +2,34 @@
     position: relative;
 }
 
-#magnified {
+div.field {
     position: absolute;
-    right: 300px; // same as in #magnified img.card
-    }
+}
 
-img.card {
+#magnified {
+    position: fixed;
+    right: 0px;
+    bottom: 0px;
+}
+
+div.field {
     position: absolute;
     width: 150px;
-    height: 75px;
+    height: 100px;
+}
+
+img.card {
+    max-height: 100%;
 }
 
 #magnified img.card {
     width: 300px;
     height: 200px;
+}
+
+.yours {
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    height: 150px;
     }

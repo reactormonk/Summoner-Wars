@@ -5,9 +5,17 @@
     <script type="text/javascript" src="./lib/jquery-1.7.2.js"></script>
     <script type="text/javascript" src="./lib/ember-0.9.6.js"></script>
     <script type="text/javascript" src="./lib/client.js"></script>
+    <script type="text/javascript" src="./lib/test.js"></script>
     <link rel="stylesheet" type="text/css" href="./client.css">
   </head>
   <body>
+    <script id="field-template" type="text/x-handlebars-template">
+      <div class="field" data-posX="{{posX}}" data-posY="{{posY}}"
+      style="left: {{left}}px; top: {{top}}px;"></div>
+    </script>
+    <script id="hand-template" type="text/x-handlebars-template">
+      <div class="hand{{#if yours}} yours{{/if}}" data-side="{{side}}"></div>
+    </script>
     <div id="field">
     </div>
     <div id="magnified">
