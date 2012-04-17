@@ -1,10 +1,3 @@
-$.fn.transform = (operator)->
-        this.css('-moz-transform', operator)
-        this.css('-webkit-transform', operator)
-        this.css('-o-transform', operator)
-        this.css('-ms-transform', operator)
-        this.css('transform', operator)
-
 Ember.View.states.inDOM.insertElement = (view, fn) ->
         fn.call(view)
 
@@ -57,8 +50,11 @@ SW.views.card.state.field =
                 [posX, posY] = @getPath('content.position')
                 @appendTo $("#field [data-posX=" + posX + "][data-posY=" + posY + "]")
         updateSide: ->
-                deg = (@content.get('side') % 2)*180
-                @$().transform('rotate(' + deg + 'deg)')
+                if this.state is 'inDOM'
+                        othersides = (attr for attr in @$().attr('class') when /^side\d/.test(attr))
+                        @$().removeClass othersides
+                        @$().addClass('side' + @getPath('content.side'))
+
 
 SW.views.card.state.hand =
         updateSide: ->
@@ -80,9 +76,24 @@ $ -> # generate the field
                         $('#field').append template
                                 posX: x
                                 posY: y
-                                left: 150*x # abitrary, see css
-                                top: 100*y
         true
+
+resizeField = ->
+        max = 0
+        for field in $('.field')
+                posX = parseInt($(field).attr('data-posx'), 10)
+                if posX > max
+                        max = posX
+        max = max + 1
+        for dom in $('.field')
+                field = $(dom)
+                posX = parseInt(field.attr('data-posx'), 10)
+                posY = parseInt(field.attr('data-posy'), 10)
+                width = $(window).width() / max
+                field.css('left', posX * width)
+                field.css('top', posY * (width / 1.5))
+$(window).resize(resizeField)
+$(resizeField)
 
 $ -> # generate the hands
         sides = for side in [0..1] # probably more later

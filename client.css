@@ -2,8 +2,21 @@
     position: relative;
 }
 
-div.field {
+.field {
     position: absolute;
+}
+
+.field img.side0 {
+    box-shadow: 0 0 10px red;
+}
+
+.field img.side1 {
+    box-shadow: 0 0 10px blue;
+    -moz-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
 }
 
 #magnified {
@@ -12,13 +25,16 @@ div.field {
     bottom: 0px;
 }
 
-div.field {
+.field {
     position: absolute;
-    width: 150px;
-    height: 100px;
+    width: 16%;
 }
 
-img.card {
+.field img.card {
+    max-width: 100%;
+}
+
+.hand img.card {
     max-height: 100%;
 }
 
@@ -26,10 +42,12 @@ img.card {
     width: 300px;
     height: 200px;
 }
-
+.hand img + img {
+    margin-left: -25%;
+}
 .yours {
     position: fixed;
     left: 0px;
     bottom: 0px;
     height: 150px;
-    }
+}

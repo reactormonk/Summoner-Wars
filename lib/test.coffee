@@ -7,7 +7,7 @@ $ ->
         c.set('name', 'Fighter')
         d = SW.card.create()
         d.set('section', "field")
-        d.set('position', [1,2])
+        d.set('position', [5,5])
         d.set('side', 0)
         d.set('fraction', 'Mercenaries')
         d.set('name', 'Owl Familiar')
