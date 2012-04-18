@@ -10,7 +10,18 @@
   </head>
   <body>
     <script id="field-template" type="text/x-handlebars-template">
-      <div class="field" data-posX="{{posX}}" data-posY="{{posY}}"></div>
+      <table>
+        <tbody>
+          {{#each this}}
+            <tr>
+              {{#each this}}
+                <td class="field" data-posX="{{posX}}" data-posY="{{posY}}">
+                </td>
+              {{/each}}
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
     </script>
     <script id="hand-template" type="text/x-handlebars-template">
       <div class="hand{{#if yours}} yours{{/if}}" data-side="{{side}}"></div>

@@ -27,7 +27,7 @@ SW.views.card = Ember.View.extend
         ).property('content.fraction', 'content.name')
         magnifyBindings: (->
                 content = @content
-                @$().unbind('mouseenter mouseleave')
+                @$().unbind('mouseenter')
                 @$().mouseenter ->
                         SW.magnifier.set('content', content)
         ).observes('content')
@@ -51,7 +51,8 @@ SW.views.card.state = {}
 SW.views.card.state.field =
         updatePosition: ->
                 [posX, posY] = @getPath('content.position')
-                @appendTo $("#field [data-posX=" + posX + "][data-posY=" + posY + "]")
+                @appendTo $("#field td[data-posX=" + posX + "][data-posY=" + posY + "]")
+                @updateSide
         updateSide: ->
                 if this.state is 'inDOM'
                         othersides = (attr for attr in @$().attr('class') when /^side\d/.test(attr))
@@ -74,29 +75,12 @@ SW.magnifier = SW.views.card.create
 
 $ -> # generate the field
         template = Handlebars.compile($("#field-template").html())
-        for x in [0..5]
+        content = for x in [0..5]
                 for y in [0..5]
-                        $('#field').append template
-                                posX: x
-                                posY: y
+                        posX: x
+                        posY: y
+        $('#field').append template(content)
         true
-
-resizeField = ->
-        max = 0
-        for field in $('.field')
-                posX = parseInt($(field).attr('data-posx'), 10)
-                if posX > max
-                        max = posX
-        max = max + 1
-        for dom in $('.field')
-                field = $(dom)
-                posX = parseInt(field.attr('data-posx'), 10)
-                posY = parseInt(field.attr('data-posy'), 10)
-                width = $('#field').width() / max
-                field.css('left', posX * width)
-                field.css('top', posY * (width / 1.5))
-$(window).resize(resizeField)
-$(resizeField)
 
 $ -> # generate the hands
         sides = for side in [0..1] # probably more later
@@ -104,3 +88,19 @@ $ -> # generate the hands
                 $('body').append template
                         side: side
                         yours: side % 2 is 0
+        true
+
+
+SW.resizeField = ->
+        height = 10 # should be low enough
+        for td in $('#field td') # max algorithm
+                h = $(td).children().first().height()
+                h > height and height = h
+        if height is 10 # let's try again later
+                setTimeout(SW.resizeField, 100)
+        else
+                for td in $('#field td')
+                        $(td).css('height', height)
+
+$(window).resize(SW.resizeField)
+$(SW.resizeField)
