@@ -1,7 +1,3 @@
-#field {
-    position: relative;
-}
-
 .field img.side0 {
     box-shadow: 0 0 10px red;
 }
@@ -20,12 +16,6 @@
     vertical-align: top;
 }
 
-#magnified {
-    position: fixed;
-    right: 0px;
-    bottom: 0px;
-}
-
 .field img.card {
     max-width: 100%;
 }
@@ -37,6 +27,7 @@
 .hand img + img {
     margin-left: -25%;
 }
+
 .yours {
     position: fixed;
     left: 0px;

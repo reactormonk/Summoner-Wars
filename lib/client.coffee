@@ -25,15 +25,9 @@ SW.views.card = Ember.View.extend
                 else
                         "./images/Cardback-" + @getPath('content.fraction') + '.jpg'
         ).property('content.fraction', 'content.name')
-        magnifyBindings: (->
-                content = @content
-                @$().unbind('mouseenter')
-                @$().mouseenter ->
-                        SW.magnifier.set('content', content)
-        ).observes('content')
         didInsertElement: ->
                 @updateSide()
-                @magnifyBindings()
+                @updateSection()
 
 (->
         for attribute in ['position', 'side', 'section']
@@ -58,20 +52,14 @@ SW.views.card.state.field =
                         othersides = (attr for attr in @$().attr('class') when /^side\d/.test(attr))
                         @$().removeClass othersides
                         @$().addClass('side' + @getPath('content.side'))
-
+        updateSection: ->
+                $.fn.hoverzoom(this.$()) # TODO cleanup this binding
 
 SW.views.card.state.hand =
         updateSide: ->
                 @appendTo $('.hand[data-side=' + @getPath('content.side') + ']')
         updateSection: ->
                 @updateSide()
-
-SW.magnifier = SW.views.card.create
-        magnifiyBindings: ->
-        updateSide: ->
-        updateMagnified: (->
-                @appendTo('#magnified')
-        ).observes('content')
 
 $ -> # generate the field
         template = Handlebars.compile($("#field-template").html())
