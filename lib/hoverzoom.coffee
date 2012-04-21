@@ -17,7 +17,7 @@
                         middle = {}
                         middle.left = position.left + jq.width()/2
                         middle.top = position.top + jq.height()/2
-                        full = $('<img class="hoverzoomed" style="pointer-events:none" src="' + jq.attr('src') + '">')
+                        full = $('<img class="hoverzoomed" style="pointer-events:none;" src="' + jq.attr('src') + '">')
                         height = full.get(0).height
                         width = full.get(0).width
                         full.appendTo('body')
