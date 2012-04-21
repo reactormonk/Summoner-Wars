@@ -25,9 +25,12 @@ SW.views.card = Ember.View.extend
                 else
                         "./images/Cardback-" + @getPath('content.fraction') + '.jpg'
         ).property('content.fraction', 'content.name')
+        sectionTransition: (->
+                @exitSection?()
+        ).observesBefore('content.section')
         didInsertElement: ->
-                @updateSide()
-                @updateSection()
+                @updateSide?()
+                @updateSection?()
 
 (->
         for attribute in ['position', 'side', 'section']
@@ -35,7 +38,7 @@ SW.views.card = Ember.View.extend
                         name = 'update' + (attribute[0].toUpperCase() + attribute[1..])
                         obj = {}
                         obj[name] = (->
-                                SW.views.card.state[@getPath('content.section')][name]?.call(this)
+                                SW.views.card.state[@getPath('content.section')]?[name]?.call(this)
                         ).observes('content.' + attribute)
                         SW.views.card.reopen(obj)
                 )()
@@ -53,7 +56,9 @@ SW.views.card.state.field =
                         @$().removeClass othersides
                         @$().addClass('side' + @getPath('content.side'))
         updateSection: ->
-                $.fn.hoverzoom(this.$()) # TODO cleanup this binding
+                @hover = $.fn.hoverzoom(this.$())
+        exitSection: ->
+                @hover.unbind() # not really sure I need this
 
 SW.views.card.state.hand =
         updateSide: ->
