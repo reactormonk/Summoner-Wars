@@ -3,7 +3,7 @@
   <head>
     <title>Summoner Wars</title>
     <script type="text/javascript" src="./lib/jquery-1.7.2.js"></script>
-    <script type="text/javascript" src="./lib/ember-0.9.6.js"></script>
+    <script type="text/javascript" src="./lib/ember-0.9.7.1.js"></script>
     <script type="text/javascript" src="./lib/hoverzoom.js"></script>
     <script type="text/javascript" src="./lib/client.js"></script>
     <script type="text/javascript" src="./lib/test.js"></script>
@@ -27,7 +27,7 @@
       </table>
     </script>
     <script id="hand-template" type="text/x-handlebars-template">
-      <div class="hand{{#if yours}} yours{{/if}}" data-side="{{side}}"></div>
+      <ul class="hand" id={{id}} data-side="{{side}}"></div>
     </script>
     <div id="field">
     </div>
