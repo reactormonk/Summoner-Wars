@@ -99,7 +99,6 @@ SW.hand.yours = SW.proto.hand.create
         classNames: ['yours', 'hand']
         side: 0
         content: []
-
 SW.hand.enemy = SW.proto.hand.create
         classNames: ['enemy', 'hand']
         side: 1
@@ -117,7 +116,7 @@ SW.hand.reopen
                 @addObject(changed)
         ).observes('yours.content.@each.side', 'enemy.content.@each.side')
 
-$(-> SW.field.appendTo('body'))
-$(-> SW.hand.yours.appendTo('body'))
+$(-> SW.field.appendTo('#container'))
+$(-> SW.hand.yours.appendTo('#container'))
 $(window).resize(SW.field.resize.bind(SW.field))
 $(SW.field.resize.bind(SW.field))

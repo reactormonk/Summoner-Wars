@@ -33,25 +33,54 @@ img.side1 {
     max-height: 100%;
 }
 
-.hand img + img {
-    margin-left: -8em;
+.hand ul {
+    list-style: none;
+    margin: 0px;
 }
 
-.hand img {
-    font-size: 1rem;
-    -webkit-transition-duration: 1s;
-    -moz-transition-duration: 1s;
-    -ms-transition-duration: 1s;
-    -o-transition-duration: 1s;
-    transition-duration: 1s;
-}
-
-.hand img:hover {
+.hand li {
+    display: inline-block;
 }
 
 .yours {
+    -webkit-transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+    -ms-transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+    transition-duration: 0.5s;
     position: fixed;
     left: 0px;
+    bottom: -11em;
+    height: 16em;
+}
+
+.yours:hover {
+    -webkit-transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+    -ms-transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+    transition-duration: 0.5s;
     bottom: 0px;
-    height: 15em;
+}
+
+.yours li {
+    width: 12em;
+    -webkit-transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+    -ms-transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+}
+
+.yours li:hover {
+    width: 24em;
+    -webkit-transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+    -ms-transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+}
+
+#bottom {
+    height: 5em;
 }
