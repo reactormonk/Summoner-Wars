@@ -69,12 +69,12 @@ SW.field = Ember.CollectionView.create
         removeObject: (card) -> @content.removeObject(card)
         resize: ->
                 height = 20 # should be low enough
-                tds = @$().children('td')
+                tds = @$().find('td')
                 for td in tds # max algorithm
-                        h = $(td).children().first().height()
+                        h = $(td).height()
                         h > height and height = h
                 if height is 20 # let's try again later
-                        setTimeout(@resize, 100)
+                        setTimeout(@resize.bind(this), 50)
                 else # will flicker, but shouldn't happen that often
                         for td in tds
                                 $(td).css('height', height)
@@ -119,5 +119,5 @@ SW.hand.reopen
 
 $(-> SW.field.appendTo('body'))
 $(-> SW.hand.yours.appendTo('body'))
-$(window).resize(-> SW.field.resize.call(SW.field))
-$(-> SW.field.resize.call(SW.field))
+$(window).resize(SW.field.resize.bind(SW.field))
+$(SW.field.resize.bind(SW.field))
