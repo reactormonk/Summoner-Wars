@@ -1,8 +1,8 @@
-.field img.side0 {
+img.side0 {
     box-shadow: 0 0 10px red;
 }
 
-.field img.side1 {
+img.side1 {
     box-shadow: 0 0 10px blue;
     -moz-transform: rotate(180deg);
     -webkit-transform: rotate(180deg);
@@ -11,13 +11,22 @@
     transform: rotate(180deg);
 }
 
-#field td {
-    width: 1%;
-    vertical-align: top;
-}
-
 .field img.card {
     max-width: 100%;
+}
+
+.battlefield table {
+    table-layout: fixed;
+    width: 100%;
+    position: relative;
+}
+
+.battlefield td {
+    width: 12.5%;
+}
+
+.battlefield {
+    position: relative;
 }
 
 .hand img.card {
@@ -25,12 +34,24 @@
 }
 
 .hand img + img {
-    margin-left: -25%;
+    margin-left: -8em;
+}
+
+.hand img {
+    font-size: 1rem;
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -ms-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+}
+
+.hand img:hover {
 }
 
 .yours {
     position: fixed;
     left: 0px;
     bottom: 0px;
-    height: 150px;
+    height: 15em;
 }

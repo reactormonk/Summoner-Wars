@@ -20,6 +20,7 @@
                         full = $('<img class="hoverzoomed" style="pointer-events:none;" src="' + jq.attr('src') + '">')
                         height = full.get(0).height
                         width = full.get(0).width
+                        return if width == jq.width()
                         full.appendTo('body')
                         full.height(jq.height())
                         full.width(jq.width())

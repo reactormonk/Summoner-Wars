@@ -12,24 +12,22 @@
     <link rel="stylesheet" type="text/css" href="./css/boilerplate_end.css">
   </head>
   <body>
+    <script type="text/x-handlebars" data-template-name="card">
+      <img {{bindAttr src="src"}} {{bindAttr alt="alt"}} class='card'>
+    </script>
     <script id="field-template" type="text/x-handlebars-template">
       <table>
         <tbody>
           {{#each this}}
-            <tr>
-              {{#each this}}
-                <td class="field" data-posX="{{posX}}" data-posY="{{posY}}">
-                </td>
-              {{/each}}
-            </tr>
+          <tr>
+            {{#each this}}
+            <td class="field" data-posX="{{posX}}" data-posY="{{posY}}">
+            </td>
+            {{/each}}
+          </tr>
           {{/each}}
         </tbody>
       </table>
     </script>
-    <script id="hand-template" type="text/x-handlebars-template">
-      <ul class="hand" id={{id}} data-side="{{side}}"></div>
-    </script>
-    <div id="field">
-    </div>
   </body>
 </html>
