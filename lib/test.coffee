@@ -38,7 +38,7 @@ $ ->
         tests[5].set('name', 'Scholar')
         tests[5].set('fraction', 'Deep Dwarves')
         tests[5].set('section', "field")
-        setTimeout (-> tests[5].set('position', [5,5])), 2000
+        setTimeout (-> tests[5].set('position', [5,4])), 2000
         tests[6] = SW.card.create()
         tests[6].set('side', 0)
         tests[6].set('name', 'Gem Mage')
