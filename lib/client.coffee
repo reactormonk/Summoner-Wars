@@ -68,9 +68,12 @@ SW.field = Ember.CollectionView.create
         addObject: (card) -> @content.addObject(card)
         removeObject: (card) -> @content.removeObject(card)
         resize: ->
-                height = 20 # should be low enough
                 tds = @$().find('td')
+                for td in tds
+                        $(td).height('auto')
+                height = 20 # should be low enough
                 for td in tds # max algorithm
+                        $(td).height('auto')
                         h = $(td).height()
                         h > height and height = h
                 if height is 20 # let's try again later
