@@ -9,6 +9,8 @@
                         x
                 else
                         y
+        em = (el) ->
+                Number(getComputedStyle(el, "").fontSize.match(/(\d+)px/)[1])
         $.fn.hoverzoom = (ele) ->
                 jq = $(ele)
                 jq.mouseenter ->
@@ -18,8 +20,8 @@
                         middle.left = position.left + jq.width()/2
                         middle.top = position.top + jq.height()/2
                         full = $('<img class="hoverzoomed" style="pointer-events:none;" src="' + jq.attr('src') + '">')
-                        height = full.get(0).height
-                        width = full.get(0).width
+                        height = 16*em(jq.get(0)) # em TODO: constants and store them somewhere
+                        width = 24*em(jq.get(0)) # em
                         return if width == jq.width()
                         full.appendTo('body')
                         full.height(jq.height())
