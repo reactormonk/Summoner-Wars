@@ -1,1 +1,1 @@
-jquery-ui/ui/jquery.ui.core.js
+/usr/share/jquery/jquery.ui.core.js

@@ -1,1 +1,1 @@
-jquery-ui/ui/jquery.ui.mouse.js
+/usr/share/jquery/jquery.ui.mouse.js

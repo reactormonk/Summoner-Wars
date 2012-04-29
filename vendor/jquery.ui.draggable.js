@@ -1,1 +1,1 @@
-jquery-ui/ui/jquery.ui.draggable.js
+/usr/share/jquery/jquery.ui.draggable.js

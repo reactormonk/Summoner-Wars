@@ -1,1 +1,1 @@
-jquery-ui/ui/jquery.ui.widget.js
+/usr/share/jquery/jquery.ui.widget.js

@@ -1,1 +1,1 @@
-jquery-ui/ui/jquery.ui.droppable.js
+/usr/share/jquery/jquery.ui.droppable.js
