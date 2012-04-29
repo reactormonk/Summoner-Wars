@@ -22,7 +22,7 @@
                         full = $('<img class="hoverzoomed" style="pointer-events:none;" src="' + jq.attr('src') + '">')
                         height = 16*em(jq.get(0)) # em TODO: constants and store them somewhere
                         width = 24*em(jq.get(0)) # em
-                        return if width == jq.width()
+                        return if height*0.9 < jq.height()
                         full.appendTo('body')
                         full.height(jq.height())
                         full.width(jq.width())
